@@ -14,7 +14,8 @@ $(function(){
     function addDate(year,month){
         var newDate = year+'-'+month
         var dateDay = getDateDay(newDate);
-        var dayList = setBlank(dateDay, dayNumber(month));
+        var twoDayList = getTwoDayNumber(month);
+        var dayList = setBlank(dateDay, dayNumber(month),twoDayList);
 
         for(var i = 0; dayList.length > i; i++){
             if(dayList[i] == riqi && year == date.getFullYear() && month == date.getMonth()+1){
@@ -89,11 +90,19 @@ $(function(){
         var daydate = date.getDay();
         return daydate
     }
+
+    //获取上个月和下个月的天数
+    function getTwoDayNumber(Month){
+        var oldOne = dayNumber(Month+1);
+        var newOne = dayNumber(Month-1);
+
+        return arr = [oldOne, newOne]
+    }
    
     // 设置空格
-    function setBlank(daydate,dayList){
+    function setBlank(daydate,dayList,twoDayList){
         for(var i = 0; daydate > i; i++){
-            dayList.unshift('');
+            dayList.unshift(twoDayList[0].pop());
         }
         return dayList
     }
