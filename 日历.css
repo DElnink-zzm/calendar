@@ -50,6 +50,11 @@ span{
     margin-bottom: 5px;
     opacity: 0.3;
 }
+.bigbox{
+    height: 200px;
+    overflow: hidden;
+}
+
 #information{
     width: 182px;
     display: flex;

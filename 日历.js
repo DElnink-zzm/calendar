@@ -103,7 +103,11 @@ $(function(){
     function setBlank(daydate,dayList,twoDayList){
         for(var i = 0; daydate > i; i++){
             dayList.unshift(twoDayList[0].pop());
+        };
+        for(var i = 0; 14 > i; i++){
+            dayList.push(twoDayList[1].shift());
         }
+
         return dayList
     }
 
@@ -143,12 +147,12 @@ $(function(){
     })
 
     //鼠标进入后展开
-    $('.head').on('mouseover',function(){
-        $('.bigbox').stop().slideDown(500);
-        $('.line').stop().fadeIn(500)
-        $('.head').on('mouseleave',function(){
-            $('.bigbox').stop().slideUp(500);
-            $('.line').stop().fadeOut(500);
-        })
-    })
+    // $('.head').on('mouseover',function(){
+    //     $('.bigbox').stop().slideDown(500);
+    //     $('.line').stop().fadeIn(500)
+    //     $('.head').on('mouseleave',function(){
+    //         $('.bigbox').stop().slideUp(500);
+    //         $('.line').stop().fadeOut(500);
+    //     })
+    // })
 })
