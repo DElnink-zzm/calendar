@@ -18,11 +18,19 @@ $(function(){
         var dayList = setBlank(dateDay, dayNumber(month),twoDayList);
 
         for(var i = 0; dayList.length > i; i++){
-            if(dayList[i] == riqi && year == date.getFullYear() && month == date.getMonth()+1){
-                var span = singleBox(dayList,i);
-                span.className = 'checked';
+            //给不属于本月的日期加一个效果
+            if (dateDay <= i && i < (dayNumber(month).length + dateDay)){
+                if(dayList[i] == riqi && year == date.getFullYear() && month == date.getMonth()+1){
+                    var span = singleBox(dayList,i);
+                    span.className = 'checked';
+                    console.log(2);
+                }else{
+                    var span = singleBox(dayList,i);
+                    span.className = 'black';
+                }
             }else{
-                singleBox(dayList,i)
+                var span = singleBox(dayList,i);
+                span.className = 'gray';
             }
         }
     }
@@ -113,13 +121,13 @@ $(function(){
 
     // 设置当前日期
     var information = document.querySelector('#information');
-    information.innerHTML ='<div id="sub"><</div><div id="text">'+year+'-'+ Month +'</div><div id="add">></div>';
+    information.innerHTML ='<div id="twoSub"><<</div><div id="sub"><</div><div id="text">'+year+'-'+ Month +'</div><div id="add">></div><div id="twoAdd">>></div>';
 
     // 调节月份
     var a = parseInt(Month);
     var b = parseInt(year);
+    // 增加月份数字
     $('#add').on('click',function(){
-        // 增加数字
         if(a < 12){
             a += 1
             $('#text').html(b +'-'+ a);
@@ -132,7 +140,7 @@ $(function(){
         addDate(b,a)
     })
 
-    // 减少数字
+    // 减少月份数字
     $('#sub').on('click',function(){
         if(a > 1){
             a -= 1
@@ -146,13 +154,31 @@ $(function(){
         addDate(b,a)
     })
 
-    //鼠标进入后展开
-    // $('.head').on('mouseover',function(){
-    //     $('.bigbox').stop().slideDown(500);
-    //     $('.line').stop().fadeIn(500)
-    //     $('.head').on('mouseleave',function(){
-    //         $('.bigbox').stop().slideUp(500);
-    //         $('.line').stop().fadeOut(500);
-    //     })
-    // })
+    //调节年份
+    //增加年份
+    $('#twoAdd').on('click',function(){
+        b += 1;
+        $('#text').html(b +'-'+ a);
+        $('#date').html('');
+        addDate(b,a);
+    })
+
+    //减少年份
+    $('#twoSub').on('click',function(){
+        b -= 1;
+        $('#text').html(b +'-'+ a);
+        $('#date').html('');
+        addDate(b,a);
+    })
+
+
+    // 鼠标进入后展开
+    $('.head').on('mouseover',function(){
+        $('.bigbox').stop().slideDown(500);
+        $('.line').stop().fadeIn(500)
+        $('.head').on('mouseleave',function(){
+            $('.bigbox').stop().slideUp(500);
+            $('.line').stop().fadeOut(500);
+        })
+    })
 })

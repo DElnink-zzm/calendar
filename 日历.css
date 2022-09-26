@@ -19,7 +19,12 @@ body{
 }
 .date span{
     font-size: 12px;
+}
+.black{
     color: rgb(55, 0, 80);
+}
+.gray{
+    color: rgb(170, 145, 145);
 }
 span{
     margin-right: 1px;
@@ -81,6 +86,9 @@ span{
     color: rgb(136, 136, 136);
     margin-bottom: 5px;
 }
+#twoAdd,#twoSub{
+    letter-spacing: -3px;
+}
 .date span:hover{
     border-radius: 12.5px;
     background-color: rgba(128, 128, 128, 0.362);
@@ -91,6 +99,14 @@ span{
     color: rgb(255, 0, 98);
 }
 #sub:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 98);
+}
+#twoSub:hover{
+    cursor: pointer;
+    color: rgb(255, 0, 98);
+}
+#twoAdd:hover{
     cursor: pointer;
     color: rgb(255, 0, 98);
 }
