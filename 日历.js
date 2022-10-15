@@ -8,6 +8,7 @@ $(function(){
     var monthArr1 = [1,3,5,7,8,10,12];
     var monthArr2 = [4,6,9,11];
     var oneWeek =['日','一','二','三','四','五','六'];
+    var monthNum = [1,2,3,4,5,6,7,8,9,10,11,12];
 
     addDate(year,Month)
     // 将日期添加到网页
@@ -121,7 +122,7 @@ $(function(){
 
     // 设置当前日期
     var information = document.querySelector('#information');
-    information.innerHTML ='<div id="twoSub"><<</div><div id="sub"><</div><div id="text">'+year+'-'+ Month +'</div><div id="add">></div><div id="twoAdd">>></div>';
+    information.innerHTML ='<div id="twoSub"><<</div><div id="sub"><</div><div id="text" class="text">'+year+'-'+ Month +'</div><div id="add">></div><div id="twoAdd">>></div>';
 
     // 调节月份
     var a = parseInt(Month);
@@ -180,5 +181,36 @@ $(function(){
             $('.bigbox').stop().slideUp(500);
             $('.line').stop().fadeOut(500);
         })
+    })
+
+    //选择想要的月份
+    //1.点击“2022-10”隐藏week和dete,如果再点一次，取消选择
+    $('#text').on('click',function(){
+        $('#week').hide();
+        $('#date').hide();
+        $('.monthChose').show();
+        $('#text').on('click',function(){
+            $('#week').toggle();
+            $('#date').toggle();
+            $('.monthChose').toggle();
+        })
+    })
+    //2.动态创建元素将元素填入
+    for(var i = 0; monthNum.length > i; i++){
+        var monthChose = document.querySelector('.monthChose');
+        var div = document.createElement('div');
+        monthChose.appendChild(div);
+        div.innerHTML = monthNum[i];
+    }
+    //3.点击指定月份后隐藏月份并切换到指定月份
+    $('.monthChose').on('click',$('.monthChose').children(),function(e){
+        $('#week').show();
+        $('#date').show();
+        $('.monthChose').hide();
+        var value = e.target.innerHTML;
+        var nowYear = $('#riqi').html().substring(0,4);
+        $('#text').html(nowYear + '-' +value);
+        $('#date').html('');
+        addDate(parseInt(nowYear),parseInt(value));
     })
 })

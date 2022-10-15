@@ -59,8 +59,43 @@ span{
     height: 200px;
     overflow: hidden;
 }
+.text{
+    padding:0px  15px;
+    line-height: 20px;
+}
+
+.text:hover{
+    cursor: pointer;
+    box-shadow: inset rgb(255, 255, 255) 0px 0px 15px;
+    border-radius: 10px;
+    padding: 0px 15px;
+}
+
+.monthChose{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.monthChose div{
+    text-align: center;
+    width: calc(190px/5);
+    height: calc(190px/5);
+    line-height: calc(190px/5);
+    margin-top: 15px;
+    box-shadow: inset rgba(255, 255, 255, 0.205) 0px 0px 15px;
+    border-radius: calc(190px/10);
+}
+
+.monthChose div:hover{
+    cursor: pointer;
+    box-shadow: inset rgb(255, 255, 255) 0px 0px 15px;
+}
 
 #information{
+    text-align: center;
+    height: 20px;
     width: 182px;
     display: flex;
     justify-content: space-evenly;
@@ -79,7 +114,7 @@ span{
 #riqi{
     margin-left: 5px;
     display: inline-block;
-    width: 90px;
+    width: 100px;
     text-align: justify;
     text-align-last: justify;
     font-size: 10px;
