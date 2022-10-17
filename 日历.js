@@ -124,7 +124,9 @@ $(function(){
     var information = document.querySelector('#information');
     information.innerHTML ='<div id="twoSub"><<</div><div id="sub"><</div><div id="text" class="text">'+year+'-'+ Month +'</div><div id="add">></div><div id="twoAdd">>></div>';
 
-    // 调节月份
+    //赋予按键功能
+    function addFunction(){
+            // 调节月份
     var a = parseInt(Month);
     var b = parseInt(year);
     // 增加月份数字
@@ -171,7 +173,8 @@ $(function(){
         $('#date').html('');
         addDate(b,a);
     })
-
+    }
+    addFunction()
 
     // 鼠标进入后展开
     $('.head').on('mouseover',function(){
@@ -189,10 +192,13 @@ $(function(){
         $('#week').hide();
         $('#date').hide();
         $('.monthChose').show();
+        //禁用按钮
+        $('#information').children('#text').siblings().off('click');
         $('#text').on('click',function(){
             $('#week').toggle();
             $('#date').toggle();
             $('.monthChose').toggle();
+            addFunction()
         })
     })
     //2.动态创建元素将元素填入
@@ -209,8 +215,11 @@ $(function(){
         $('.monthChose').hide();
         var value = e.target.innerHTML;
         var nowYear = $('#riqi').html().substring(0,4);
+        a = parseInt(value);
+        b = parseInt(nowYear);
         $('#text').html(nowYear + '-' +value);
         $('#date').html('');
         addDate(parseInt(nowYear),parseInt(value));
+        addFunction()
     })
 })
